@@ -1,0 +1,1 @@
+{"version":3,"sources":["global.css"],"names":[],"mappings":"AAAA,KACI,QACJ,CACA,uEACI,+BACJ","file":"main.c088a060.chunk.css","sourcesContent":["body {\r\n    margin: 0;\r\n}\r\n.MuiTreeItem-root.Mui-selected > .MuiTreeItem-content .MuiTreeItem-label {\r\n    background-color: #fff !important;\r\n}\r\n"]}

@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-material-boilerplate/static/css/main.c088a060.chunk.css",
+    "main.js": "/react-material-boilerplate/static/js/main.5c500312.chunk.js",
+    "main.js.map": "/react-material-boilerplate/static/js/main.5c500312.chunk.js.map",
+    "runtime-main.js": "/react-material-boilerplate/static/js/runtime-main.f35e91b8.js",
+    "runtime-main.js.map": "/react-material-boilerplate/static/js/runtime-main.f35e91b8.js.map",
+    "static/js/2.4b32af86.chunk.js": "/react-material-boilerplate/static/js/2.4b32af86.chunk.js",
+    "static/js/2.4b32af86.chunk.js.map": "/react-material-boilerplate/static/js/2.4b32af86.chunk.js.map",
+    "index.html": "/react-material-boilerplate/index.html",
+    "precache-manifest.537669ac7f0026f5af87902f9d621e4b.js": "/react-material-boilerplate/precache-manifest.537669ac7f0026f5af87902f9d621e4b.js",
+    "service-worker.js": "/react-material-boilerplate/service-worker.js",
+    "static/css/main.c088a060.chunk.css.map": "/react-material-boilerplate/static/css/main.c088a060.chunk.css.map",
+    "static/js/2.4b32af86.chunk.js.LICENSE.txt": "/react-material-boilerplate/static/js/2.4b32af86.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f35e91b8.js",
+    "static/js/2.4b32af86.chunk.js",
+    "static/css/main.c088a060.chunk.css",
+    "static/js/main.5c500312.chunk.js"
+  ]
+}
