@@ -1,7 +1,7 @@
 {
   "name": "react-boilerplate",
-  "version": "0.1.0",
-  "homepage": "https://steven-jackson-dev.github.io/react-material-boilerplate",
+  "version": "1.0.0",
+  "homepage": "https://steven-jackson-dev.github.io/script-kiddie",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",

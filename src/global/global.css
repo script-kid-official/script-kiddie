@@ -1,6 +1,68 @@
 body {
     margin: 0;
 }
-.MuiTreeItem-root.Mui-selected > .MuiTreeItem-content .MuiTreeItem-label {
-    background-color: #fff !important;
+
+table {
+    width: 100%;
+    padding: 2em;
+    -webkit-box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 21px 0px rgba(0, 0, 0, 0.2);
+}
+
+tr {
+    padding: 2em;
+    height: 40px;
+    border-bottom: 1px solid #ccc !important;
+}
+
+a {
+    text-decoration: none;
+    color: #e91e1e;
+}
+
+pre {
+    margin: 0;
+    padding: 1em 0;
+}
+a:visited {
+    color: #e91e1e;
+}
+nav a {
+    text-decoration: none;
+    color: white !important;
+}
+nav a.active {
+    text-decoration: none;
+    color: #70c0ff !important;
+}
+
+section.content {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.block {
+    margin: 2em;
+    flex: auto;
+}
+.block .block-content-title {
+    background: #2196f3;
+    color: white;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.block .block-content-description {
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.87);
+
+}
+.half-width {
+    width: 50%;
+    margin: 2em;
+}
+
+::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
 }

@@ -1,10 +1,13 @@
 import React from 'react'
 import { Route, Switch, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import AppRoutes from 'global/AppRoutes.module'
+import ProtectedRoutes from './ProtectedRoutes';
+import PageLogin from 'pages/PageLogin';
+import Homepage from 'pages/Homepage';
 
 const AppRenderRoutes = () => {
     let location = useLocation();
+
     return (
         <TransitionGroup>
             <CSSTransition
@@ -13,15 +16,14 @@ const AppRenderRoutes = () => {
                 timeout={{ enter: 800, exit: 0 }}>
 
                 <Switch location={location}>
-                    {AppRoutes.map(route => {
-                        return <Route key={route.id} exact path={route.path} component={route.page} />
-                    })}
+                    <Route exact path='/' component={Homepage} />
+                    <Route exact path='/login' component={PageLogin} />
+                    <ProtectedRoutes />
                     <Route exact path='' render={() => `404 - Page Not Found`} />
                 </Switch>
             </CSSTransition>
         </TransitionGroup>
     )
 }
-
 
 export default AppRenderRoutes

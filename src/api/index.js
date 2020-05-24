@@ -1,21 +1,15 @@
 import axios from 'axios'
 
-const url = 'https://jsonplaceholder.typicode.com';
+const url = 'http://134.122.97.189/';
 
-export const fetchUsersData = async () => {
-    try {
-        const { data } = await axios.get(`${url}/users`)
-        return data
-    } catch (error) {
-        console.log("fetchData -> error", error)
-    }
-}
 
-export const fetchPostsData = async () => {
+export const fetchContentBySlug = async (parent, child) => {
+    if (!child) throw Error ('Slug Must be defined')
     try {
-        const { data } = await axios.get(`${url}/posts`)
-        return data
+        const { data } = await axios.get(url.concat(`${parent}?slug=${child}`))
+        console.log("fetchContentBySlug -> data", data[0].children)
+        return data[0].children
     } catch (error) {
-        console.log("fetchData -> error", error)
+        throw Error (error)
     }
 }
