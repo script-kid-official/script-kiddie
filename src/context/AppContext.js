@@ -26,7 +26,7 @@ const AppStore = ({ children }) => {
 const initialState = {
     isAuthenticated: true,
     isLoading: false,
-    toggleDrawer: true,
+    toggleDrawer: false,
     response: []
 }
 

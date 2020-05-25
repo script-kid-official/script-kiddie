@@ -5,7 +5,7 @@ import { Route} from "react-router-dom";
 
 
 const ProtectedRoutes = ({ children }) => {
-    const [state, dispatch] = useContext(AppContext);
+    const [state] = useContext(AppContext);
 
     return (
         <>

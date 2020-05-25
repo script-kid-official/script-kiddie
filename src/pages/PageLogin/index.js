@@ -1,25 +1,14 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
+import useInputState from 'utils/hooks/useInputState';
 import { makeStyles } from '@material-ui/core/styles';
+import { Avatar, Button, CssBaseline, TextField, Link, Paper, Box, Grid, Typography } from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Your Website
-      </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
+            <Link color="inherit" href="https://github.com/steven-jackson-dev/" target="_blank">Steven Jackson</Link>
+            {' '}{new Date().getFullYear()}
         </Typography>
     );
 }
@@ -57,7 +46,10 @@ const useStyles = makeStyles((theme) => ({
 
 function PageLogin() {
     const classes = useStyles();
-
+    const [inputEmail, setInputEmail] = useInputState(false);
+    const [inputPassword, setInputPassword] = useInputState(false);
+    console.log("PageLogin -> inputPassword", inputPassword)
+    console.log("PageLogin -> inputEmail", inputEmail)
     return (
         <Grid container component="main" className={classes.root}>
             <CssBaseline />
@@ -80,6 +72,7 @@ function PageLogin() {
                             label="Email Address"
                             name="email"
                             autoComplete="email"
+                            onChange={setInputEmail}
                             autoFocus
                         />
                         <TextField
@@ -91,6 +84,7 @@ function PageLogin() {
                             label="Password"
                             type="password"
                             id="password"
+                            onChange={setInputPassword}
                             autoComplete="current-password"
                         />
 

@@ -25,20 +25,19 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function App() {
-  const [{ toggleDrawer, isAuthenticated }, dispatch] = useContext(AppContext);
+  const [{ toggleDrawer, isAuthenticated }] = useContext(AppContext);
   const classes = useStyles();
   return (
     <ThemeProvider>
       <div className="App">
-        {isAuthenticated &&
-          <AppNavigation />
-        }
+        {isAuthenticated && <AppNavigation />}
 
         <main className={toggleDrawer && isAuthenticated ? classes.content : classes.contentShift}>
           <AppHeader />
           <AppRenderRoutes />
         </main>
-        <AppFooter />
+        {isAuthenticated && <AppFooter />}
+
       </div>
     </ThemeProvider>
 

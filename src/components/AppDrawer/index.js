@@ -1,18 +1,12 @@
 import React, { Fragment, useContext } from 'react';
 import clsx from 'clsx';
+import { NavLink } from 'react-router-dom';
+import { AppContext } from 'context/AppContext';
+import { AppProtectedRoutes } from 'global/AppRoutes.module';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
+import { Drawer, List, Divider, IconButton, ListItem, ListItemText } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import { NavLink } from 'react-router-dom';
-import { AppProtectedRoutes } from 'global/AppRoutes.module';
-import { AppContext } from 'context/AppContext';
-
 
 const drawerWidth = 300;
 
@@ -23,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: '#000c',
+    backgroundColor: '#292929',
   },
   categoryHeaderPrimary: {
     color: '#70c0ff',
