@@ -1,7 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { AppContext } from 'context/AppContext';
 
-function Homepage(props) {
+
+function Homepage() {
+    const [state] = useContext(AppContext);
 
     return (
         <>
@@ -31,9 +33,5 @@ function Homepage(props) {
         </>
     );
 }
-
-Homepage.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
 export default Homepage;

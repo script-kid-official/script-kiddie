@@ -2,7 +2,7 @@ import React, { Fragment, useContext } from 'react';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 import { AppContext } from 'context/AppContext';
-import { AppProtectedRoutes } from 'global/AppRoutes.module';
+import { AppProtectedRoutes } from 'global/routes/AppRoutes.module';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Drawer, List, Divider, IconButton, ListItem, ListItemText } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';

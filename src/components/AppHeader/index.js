@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AppContext } from 'context/AppContext';
 import { makeStyles } from '@material-ui/core/styles';
-import {AppBar,Toolbar ,Typography ,Button ,IconButton} from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AppNavigation() {
   const classes = useStyles();
+  // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useContext(AppContext);
 
   const handleToggleDrawer = () => {
@@ -27,13 +29,13 @@ export default function AppNavigation() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{backgroundColor: '#2196f3'}}>
+      <AppBar position="static" style={{ backgroundColor: '#2196f3' }}>
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} onClick={handleToggleDrawer} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>Script Kiddie</Typography>
-          <Button color="inherit">Login</Button>
+          <Typography variant="h6" className={classes.title}><Link to='/' style={{ color: 'white' }}>Script Kiddie</Link></Typography>
+          <Link to='/login' style={{ color: 'white' }}><Button color="inherit">Login</Button></Link>
         </Toolbar>
       </AppBar>
     </div>

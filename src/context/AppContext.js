@@ -6,6 +6,10 @@ function reducer(state, action) {
     switch (action.type) {
         case 'SET_CONTENT':
             return { ...state, response: action.payload }
+        case 'SET_JWT_TOKEN':
+            return {
+                ...state, isAuthenticated: true, user: { jwtToken: action.payload }
+            }
         case 'TOGGLE_DRAWER':
             return { ...state, toggleDrawer: !state.toggleDrawer }
         case 'IS_LOADING':
@@ -24,9 +28,12 @@ const AppStore = ({ children }) => {
 }
 
 const initialState = {
-    isAuthenticated: true,
+    isAuthenticated: false,
     isLoading: false,
     toggleDrawer: false,
+    user: {
+        jwtToken: null
+    },
     response: []
 }
 

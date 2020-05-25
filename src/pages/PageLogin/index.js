@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import useInputState from 'utils/hooks/useInputState';
+import { Redirect } from "react-router-dom";
+import { AppContext } from 'context/AppContext';
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Button, CssBaseline, TextField, Link, Paper, Box, Grid, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-
+import { postLogin } from 'api';
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -45,11 +47,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function PageLogin() {
+    const [state, dispatch] = useContext(AppContext);
     const classes = useStyles();
+    const [showMessage, setShowMessage] = useState(false);
     const [inputEmail, setInputEmail] = useInputState(false);
     const [inputPassword, setInputPassword] = useInputState(false);
-    console.log("PageLogin -> inputPassword", inputPassword)
-    console.log("PageLogin -> inputEmail", inputEmail)
+
+    const handleLogin = async () => {
+        const login = await postLogin(inputEmail, inputPassword);
+        console.log("handleLogin -> login", login)
+
+        if (login.status === 'failed') setShowMessage(login)
+        if (login.jwt) {
+            localStorage.setItem("token", JSON.stringify(login.jwt));
+            dispatch({ type: 'SET_JWT_TOKEN', payload: login.jwt })
+        }
+    }
+
+    if (state.isAuthenticated) return <Redirect to="/" />;
+
     return (
         <Grid container component="main" className={classes.root}>
             <CssBaseline />
@@ -59,49 +75,50 @@ function PageLogin() {
                     <Avatar className={classes.avatar}>
                         <LockOutlinedIcon />
                     </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign in
-          </Typography>
-                    <form className={classes.form} noValidate>
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            onChange={setInputEmail}
-                            autoFocus
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            onChange={setInputPassword}
-                            autoComplete="current-password"
-                        />
+                    <Typography component="h1" variant="h5">Sign in</Typography>
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        name="email"
+                        autoComplete="email"
+                        onChange={setInputEmail}
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        onChange={setInputPassword}
+                        autoComplete="current-password"
+                    />
+                    {showMessage &&
+                        <div style={{ fontSize: '1em', color: showMessage.status === 'failed' ? 'red' : 'green' }}>{showMessage.message}</div>
+                    }
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                        onClick={handleLogin}
+                    >
 
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                        >
-                            Sign In
+                        Sign In
             </Button>
 
-                        <Box mt={5}>
-                            <Copyright />
-                        </Box>
-                    </form>
+                    <Box mt={5}>
+
+                        <Copyright />
+                    </Box>
                 </div>
             </Grid>
         </Grid>

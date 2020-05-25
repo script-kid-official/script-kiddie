@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { AppContext } from 'context/AppContext';
-import AppRenderRoutes from 'global/AppRenderRoutes.module';
+import AppRenderRoutes from 'global/routes/AppRenderRoutes.module';
 import ThemeProvider from 'global/Theme';
+import { makeStyles } from '@material-ui/core/styles';
 import { AppFooter, AppNavigation, AppHeader } from 'components';
 import 'global/global.css';
-import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const [{ toggleDrawer, isAuthenticated }] = useContext(AppContext);
   const classes = useStyles();
+
   return (
     <ThemeProvider>
       <div className="App">
