@@ -1,20 +1,47 @@
-import React from 'react';
-import { reusableFunction } from 'utils/common'
-import { AppHeader, AppFooter } from 'components';
-import { Container } from '@material-ui/core'
-import AppRenderRoutes from 'global/AppRenderRoutes.module';
+import React, { useContext } from 'react';
+import { AppContext } from 'context/AppContext';
+import AppRenderRoutes from 'global/routes/AppRenderRoutes.module';
+import ThemeProvider from 'global/Theme';
+import { makeStyles } from '@material-ui/core/styles';
+import { AppFooter, AppNavigation, AppHeader } from 'components';
 import 'global/global.css';
 
+const useStyles = makeStyles((theme) => ({
+  content: {
+    flexGrow: 1,
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginLeft: '300px',
+  },
+  contentShift: {
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
+  },
+}))
+
 function App() {
-  reusableFunction()
+  const [{ toggleDrawer, isAuthenticated }] = useContext(AppContext);
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <AppHeader />
-      <Container style={{ marginBottom: '2em' }}>
-        <AppRenderRoutes />
-      </Container>
-      <AppFooter />
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        {isAuthenticated && <AppNavigation />}
+
+        <main className={toggleDrawer && isAuthenticated ? classes.content : classes.contentShift}>
+          <AppHeader />
+          <AppRenderRoutes />
+        </main>
+        {isAuthenticated && <AppFooter />}
+
+      </div>
+    </ThemeProvider>
+
   );
 }
 
