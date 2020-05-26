@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Button, CssBaseline, TextField, Link, Paper, Box, Grid, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { postLogin } from 'api';
+import { setCookie } from 'utils/common';
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -55,14 +56,15 @@ function PageLogin() {
 
     const handleLogin = async () => {
         const login = await postLogin(inputEmail, inputPassword);
-        console.log("handleLogin -> login", login)
 
         if (login.status === 'failed') setShowMessage(login)
         if (login.jwt) {
-            localStorage.setItem("token", JSON.stringify(login.jwt));
+            setCookie('SKToken', login.jwt, 1)
             dispatch({ type: 'SET_JWT_TOKEN', payload: login.jwt })
         }
     }
+
+
 
     if (state.isAuthenticated) return <Redirect to="/" />;
 
