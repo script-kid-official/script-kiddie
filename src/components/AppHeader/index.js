@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 export default function AppNavigation() {
   const classes = useStyles();
   // eslint-disable-next-line no-unused-vars
-  const [state, dispatch] = useContext(AppContext);
+  const [{ isAuthenticated }, dispatch] = useContext(AppContext);
 
   const handleToggleDrawer = () => {
     dispatch({ type: 'TOGGLE_DRAWER' })
@@ -31,9 +31,10 @@ export default function AppNavigation() {
     <div className={classes.root}>
       <AppBar position="static" style={{ backgroundColor: '#2196f3' }}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} onClick={handleToggleDrawer} color="inherit" aria-label="menu">
+          {isAuthenticated && <IconButton edge="start" className={classes.menuButton} onClick={handleToggleDrawer} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
+          }
           <Typography variant="h6" className={classes.title}><Link to='/' style={{ color: 'white' }}>Script Kiddie</Link></Typography>
           <Link to='/login' style={{ color: 'white' }}><Button color="inherit">Login</Button></Link>
         </Toolbar>

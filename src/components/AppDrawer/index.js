@@ -32,9 +32,9 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-wend',
   },
-item: {
-  textAlign: 'center'
-}
+  item: {
+    textAlign: 'center'
+  }
 }));
 
 function AppNavigation(props) {
@@ -64,8 +64,8 @@ function AppNavigation(props) {
       <Divider />
       <List>
 
-        {AppProtectedRoutes.map((parent) => (<List>
-          {parent.inNavigation && <AppDrawerItem key={parent.id} parent={parent} classes={classes} />}
+        {AppProtectedRoutes.map((parent) => (<List key={parent.id}>
+          {parent.inNavigation && <AppDrawerItem parent={parent} classes={classes} />}
         </List>
         ))}
       </List>

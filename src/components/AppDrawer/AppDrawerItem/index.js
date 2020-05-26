@@ -20,7 +20,7 @@ function AppDrawerItem({ parent, classes }) {
         </ListItem>
         {
             parent.children.map(child => {
-                return <Collapse in={openMenuToggle} timeout="auto" unmountOnExit><NavLink key={child.id} className={classes.navLink} to={child.path}>
+                return <Collapse key={child.id} in={openMenuToggle} timeout="auto" unmountOnExit><NavLink key={child.id} className={classes.navLink} to={child.path}>
                     <ListItem button className={clsx(classes.item)} >
                         <ListItemText  >
                             {child.id}
