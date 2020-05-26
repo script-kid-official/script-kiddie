@@ -8,7 +8,6 @@ const AuthGuard = ({ children }) => {
     const [{ isAuthenticated, user }, dispatch] = useContext(AppContext);
 
     const authCheck = getCookie('SKToken');
-    console.log("AuthGuard -> authCheck", authCheck)
     if (authCheck && authCheck !== user.jwtToken) {
         dispatch({ type: 'SET_JWT_TOKEN', payload: authCheck })
     }
