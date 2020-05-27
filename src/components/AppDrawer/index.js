@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#292929',
   },
   categoryHeaderPrimary: {
-    color: '#70c0ff',
+    color: '#fff',
     fontSize: '18px',
     textAlign: 'center'
   },

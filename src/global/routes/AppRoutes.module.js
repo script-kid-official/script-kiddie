@@ -104,7 +104,7 @@ export const AppProtectedRoutes = [
         inNavigation: true,
         children: [
             { id: 'Image Compression', path: '/tools/image-compression' },
-            { id: 'Other Tools', path: '/tools/other-tools' },
+            { id: 'Tools', path: '/tools/other-tools' },
 
         ],
     },

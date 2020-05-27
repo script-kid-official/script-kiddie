@@ -36,7 +36,8 @@ export default function AppNavigation() {
           </IconButton>
           }
           <Typography variant="h6" className={classes.title}><Link to='/' style={{ color: 'white' }}>Script Kiddie</Link></Typography>
-          <Link to='/login' style={{ color: 'white' }}><Button color="inherit">Login</Button></Link>
+          {!isAuthenticated &&<Link to='/login' style={{ color: 'white' }}><Button color="inherit">Login</Button></Link>}
+          {!isAuthenticated &&<Button color="inherit">Logout</Button>}
         </Toolbar>
       </AppBar>
     </div>
