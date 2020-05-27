@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getCookie } from 'utils/common';
 
 const url = 'http://134.122.97.189/';
 
@@ -6,8 +7,8 @@ const url = 'http://134.122.97.189/';
 export const fetchContentBySlug = async (parent, child) => {
     if (!child) throw Error('Slug Must be defined')
     try {
-        const token = localStorage.getItem("token");
-        const { data } = await axios.get(url.concat(`${parent}?slug=${child}`), { headers: { "Authorization": `Bearer ${token.slice(1, -1)}` } })
+        const token = getCookie('SKToken');
+        const { data } = await axios.get(url.concat(`${parent}?slug=${child}`), { headers: { "Authorization": `Bearer ${token}` } })
         return data[0].children
     } catch (error) {
         console.log(error)
