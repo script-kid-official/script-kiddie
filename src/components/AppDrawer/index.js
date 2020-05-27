@@ -1,12 +1,12 @@
-import React, { Fragment, useContext } from 'react';
-import clsx from 'clsx';
-import { NavLink } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
 import { AppContext } from 'context/AppContext';
 import { AppProtectedRoutes } from 'global/routes/AppRoutes.module';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Drawer, List, Divider, IconButton, ListItem, ListItemText } from '@material-ui/core';
+import { Drawer, List, Divider, IconButton } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import AppDrawerItem from './AppDrawerItem';
+
 
 const drawerWidth = 300;
 
@@ -32,7 +32,9 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-wend',
   },
-
+  item: {
+    textAlign: 'center'
+  }
 }));
 
 function AppNavigation(props) {
@@ -40,11 +42,9 @@ function AppNavigation(props) {
   const theme = useTheme();
   const [{ toggleDrawer }, dispatch] = useContext(AppContext);
 
-
   const handleToggleDrawer = (event) => {
     dispatch({ type: 'TOGGLE_DRAWER' })
   };
-
 
   return (
     <Drawer
@@ -64,12 +64,9 @@ function AppNavigation(props) {
       <Divider />
       <List>
 
-        {AppProtectedRoutes.map((parent) => (
-          <Fragment key={parent.id}>
-            {parent.inNavigation && <RenderParent classes={classes} id={parent.id} />}
-            {parent.children && <RenderChildren classes={classes} children={parent.children} />}
-            {parent.inNavigation && <Divider className={classes.divider} />}
-          </Fragment>
+        {AppProtectedRoutes.map((parent) => (<List key={parent.id}>
+          {parent.inNavigation && <AppDrawerItem parent={parent} classes={classes} />}
+        </List>
         ))}
       </List>
 
@@ -77,28 +74,6 @@ function AppNavigation(props) {
   );
 }
 
-const RenderParent = ({ classes, id }) => {
-  return <ListItem className={classes.categoryHeader}>
-    <ListItemText classes={{ primary: classes.categoryHeaderPrimary }} >
-      {id}
-    </ListItemText>
-  </ListItem>
-}
-
-const RenderChildren = ({ classes, children }) => {
-  return <>
-    {children.map(child => {
-      return <NavLink key={child.id} className={classes.navLink} to={child.path}>
-        <ListItem button className={clsx(classes.item)} >
-          <ListItemText classes={{ primary: classes.itemPrimary }} >
-            {child.id}
-          </ListItemText>
-        </ListItem>
-      </NavLink>
-    })
-    }
-  </>
-}
 
 
 export default AppNavigation;

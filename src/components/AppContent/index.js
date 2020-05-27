@@ -19,10 +19,10 @@ function AppContent(props) {
 
   return (
     <Paper className={classes.paper}>
-      <div>
+      {/* <div>
         <Typography variant="h5" align="center">{name}</Typography>
         <Typography variant="body1" align="center">{description}</Typography>
-      </div>
+      </div> */}
 
       <div dangerouslySetInnerHTML={{ __html: content }} />
     </Paper>
