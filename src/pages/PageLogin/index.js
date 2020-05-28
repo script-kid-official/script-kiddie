@@ -38,10 +38,6 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         backgroundColor: theme.palette.secondary.main,
     },
-    form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
-    },
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
@@ -51,16 +47,19 @@ function PageLogin() {
     const [state, dispatch] = useContext(AppContext);
     const classes = useStyles();
     const [showMessage, setShowMessage] = useState(false);
-    const [inputEmail, setInputEmail] = useInputState(false);
+    const [inputLogin, setInputLogin] = useInputState(false);
     const [inputPassword, setInputPassword] = useInputState(false);
 
-    const handleLogin = async () => {
-        const login = await postLogin(inputEmail, inputPassword);
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        const login = await postLogin(inputLogin, inputPassword);
 
         if (login.status === 'failed') setShowMessage(login)
         if (login.jwt) {
             setCookie('SKToken', login.jwt, 1)
             dispatch({ type: 'SET_JWT_TOKEN', payload: login.jwt })
+            dispatch({ type: 'TOGGLE_DRAWER' })
+
         }
     }
 
@@ -78,45 +77,45 @@ function PageLogin() {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">Sign in</Typography>
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
-                        onChange={setInputEmail}
-                        autoFocus
-                    />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        onChange={setInputPassword}
-                        autoComplete="current-password"
-                    />
-                    {showMessage &&
-                        <div style={{ fontSize: '1em', color: showMessage.status === 'failed' ? 'red' : 'green' }}>{showMessage.message}</div>
-                    }
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.submit}
-                        onClick={handleLogin}
-                    >
+                    <form noValidate autoComplete="on">
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="login"
+                            label="Login/Usename"
+                            name="login"
+                            onChange={setInputLogin}
+                            autoFocus
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            onChange={setInputPassword}
+                            autoComplete="current-password"
+                        />
+                        {showMessage &&
+                            <div style={{ fontSize: '1em', color: showMessage.status === 'failed' ? 'red' : 'green' }}>{showMessage.message}</div>
+                        }
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                            onClick={handleLogin}
+                        >
 
-                        Sign In
+                            Sign In
             </Button>
-
+                    </form>
                     <Box mt={5}>
 
                         <Copyright />

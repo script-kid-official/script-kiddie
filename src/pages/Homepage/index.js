@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Homepage() {
     const classes = useStyles();
-    const [{ isAuthenticated }, dispatch] = useContext(AppContext);
+    const [{ isAuthenticated }] = useContext(AppContext);
 
     return (
         <Grid container component="main" className={classes.root}>

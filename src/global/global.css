@@ -23,15 +23,18 @@ a {
 
 pre {
     margin: 0;
-    padding: 1em 0;
+    padding: 4em;
 }
+
 a:visited {
     color: #e91e1e;
 }
+
 nav a {
     text-decoration: none;
     color: white !important;
 }
+
 nav a.active {
     text-decoration: none;
     color: #70c0ff !important;
@@ -45,8 +48,17 @@ section.content {
 .block {
     margin: 2em;
     flex: auto;
-    max-width: 100%;
+    max-width: 45%;
 }
+
+@media screen and (max-width: 700px) {
+    .block {
+        margin: 2em;
+        flex: auto;
+        max-width: 100%;
+    }
+}
+
 .block .block-content-title {
     background: #2196f3;
     color: white;
@@ -70,11 +82,38 @@ section.content {
     background-color: #fff;
     color: rgba(0, 0, 0, 0.87);
 }
+
+.block p {
+    background-color: #fff;
+    padding: 1.5em;
+
+}
+
 .half-width {
     width: 50%;
     margin: 2em;
 }
 
+/* Let's get this party started */
 ::-webkit-scrollbar {
-    display: none; /* Chrome Safari */
+    width: 6px;
+    background-color: rgb(58, 58, 58);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #2196f3;
+    border-left: 1px solid rgb(58, 58, 58);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    border-radius: 5px;
+    background: #2196f3;
+    border-left: 1px solid rgb(58, 58, 58);
+}
+
+.MuiList-padding {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
 }

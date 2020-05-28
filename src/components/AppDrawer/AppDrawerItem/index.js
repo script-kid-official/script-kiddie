@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
-import { ListItem, ListItemText, Collapse, Divider } from '@material-ui/core';
+import { ListItem, ListItemText, Collapse, Typography, Divider } from '@material-ui/core';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
@@ -18,22 +18,25 @@ function AppDrawerItem({ parent, classes }) {
             </ListItemText>
             {openMenuToggle ? <ExpandLess style={{ color: '#70c0ff' }} /> : <ExpandMore style={{ color: '#70c0ff' }} />}
         </ListItem>
-        {
-            parent.children.map(child => {
-                return <Collapse key={child.id} in={openMenuToggle} timeout="auto" unmountOnExit><NavLink key={child.id} className={classes.navLink} to={child.path}>
-                    <ListItem button className={clsx(classes.item)} >
-                        <ListItemText  >
-                            {child.id}
-                        </ListItemText>
-                    </ListItem>
-                </NavLink>
+        <Collapse in={openMenuToggle} timeout="auto" unmountOnExit>
+            <Divider />
+            {
+                parent.children.map(child => {
+                    return <NavLink key={child.id} className={classes.navLink} to={child.path}>
+                        <ListItem button className={clsx(classes.item)} >
+                            <ListItemText >
+                                <Typography variant="body2">
+                                    {child.id}
+                                </Typography>
+                            </ListItemText>
+                        </ListItem>
+                    </NavLink>
 
-                </Collapse>
-            })
-        }
-        <Divider className={classes.divider} />
+                })
+            }
+            <Divider style={{ margin: '1em 0' }} />
+        </Collapse>
     </>
-
     )
 }
 

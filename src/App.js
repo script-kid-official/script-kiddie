@@ -3,8 +3,9 @@ import { AppContext } from 'context/AppContext';
 import AppRenderRoutes from 'global/routes/AppRenderRoutes.module';
 import ThemeProvider from 'global/Theme';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppFooter, AppNavigation, AppHeader } from 'components';
+import { AppNavigation, AppHeader } from 'components';
 import 'global/global.css';
+import { getCookie } from "utils/common";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: '300px',
+    marginLeft: '250px',
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -25,8 +26,13 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function App() {
-  const [{ toggleDrawer, isAuthenticated }] = useContext(AppContext);
+  const [{ toggleDrawer, isAuthenticated, user }, dispatch] = useContext(AppContext);
   const classes = useStyles();
+  const cookie = getCookie('SKToken');
+
+  if (cookie && cookie !== user.jwtToken) {
+    dispatch({ type: 'SET_JWT_TOKEN', payload: cookie })
+  }
 
   return (
     <ThemeProvider>
@@ -37,7 +43,6 @@ function App() {
           <AppHeader />
           <AppRenderRoutes />
         </main>
-        {isAuthenticated && <AppFooter />}
 
       </div>
     </ThemeProvider>
