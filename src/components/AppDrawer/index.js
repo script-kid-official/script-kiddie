@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from 'context/AppContext';
 import { AppProtectedRoutes } from 'global/routes/AppRoutes.module';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -8,7 +8,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import AppDrawerItem from './AppDrawerItem';
 
 
-const drawerWidth = 300;
+const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   categoryHeaderPrimary: {
     color: '#fff',
-    fontSize: '18px',
+    fontSize: '15px',
     textAlign: 'center'
   },
   drawerHeader: {
@@ -33,7 +33,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-wend',
   },
   item: {
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: '10px',
+    padding: '8px 8px 0 0',
   }
 }));
 
@@ -70,7 +72,7 @@ function AppNavigation(props) {
         ))}
       </List>
 
-    </Drawer>
+    </Drawer >
   );
 }
 

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: '300px',
+    marginLeft: '250px',
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const [{ toggleDrawer, isAuthenticated, user }, dispatch] = useContext(AppContext);
   const classes = useStyles();
-
   const cookie = getCookie('SKToken');
 
   if (cookie && cookie !== user.jwtToken) {
