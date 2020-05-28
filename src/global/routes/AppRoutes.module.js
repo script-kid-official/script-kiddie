@@ -1,6 +1,20 @@
 import PageContent from "pages/PageContent";
 
 export const AppProtectedRoutes = [
+
+    {
+        id: 'HTML',
+        page: PageContent,
+        path: '/htmls/:child',
+        inNavigation: true,
+        children: [
+            { id: 'All Attributes', path: '/htmls/all-html-attributes' },
+            { id: 'Color Names', path: '/htmls/html-color-names' },
+            { id: 'Event Attributes', path: '/htmls/html-event-attributes' },
+            { id: 'Global Attributes', path: '/htmls/html-global-attributes' },
+            { id: 'Semantics by Category', path: '/htmls/elements-by-category' },
+        ],
+    },
     {
         id: 'CSS',
         page: PageContent,
@@ -17,19 +31,44 @@ export const AppProtectedRoutes = [
         ],
     },
     {
-        id: 'Design',
+        id: 'Javascript',
         page: PageContent,
-        path: '/designs/:child',
+        path: '/javascripts/:child',
         inNavigation: true,
         children: [
-            { id: 'Design Inspiration', path: '/designs/design-inspiration' },
-            { id: 'Design Systems & Style Guides', path: '/designs/design-systems-style-guides' },
-            { id: 'Downloadable Design Software', path: '/designs/downloadable-design-software' },
-            { id: 'HTML & CSS Templates', path: '/designs/html-css-templates' },
-            { id: 'Online Design Tools', path: '/designs/online-design-tools' },
-            { id: 'UI Components & Kits', path: '/designs/ui-components-kits' },
-            { id: 'UX/UI Online Resources', path: '/designs/ux-ui-online-resources' },
-
+            { id: 'General', path: '/javascripts/js-general' },
+            { id: 'ES6+', path: '/javascripts/js-es6-plus' },
+            { id: 'jQuery', path: '/javascripts/jquery' },
+            { id: 'JSON', path: '/javascripts/json' },
+            { id: 'Typescript', path: '/javascripts/typescript' },
+            { id: 'Arrays', path: '/javascripts/js-array-properties' },
+            { id: 'Date', path: '/javascripts/js-date-methods' },
+            { id: 'Math', path: '/javascripts/js-math-object-methods' },
+            { id: 'String', path: '/javascripts/js-string-methods' },
+        ],
+    },
+    {
+        id: 'PHP',
+        page: PageContent,
+        path: '/phps/:child',
+        inNavigation: true,
+        children: [
+            { id: 'General', path: '/phps/general' },
+            { id: 'Array', path: '/phps/php-array-functions' },
+            { id: 'Math', path: '/phps/math-functions' },
+            { id: 'MySqli', path: '/phps/mysqli' },
+            { id: 'String', path: '/phps/php-string-functions' },
+            { id: 'Variable', path: '/phps/php-variable-functions' },
+        ],
+    },
+    {
+        id: 'Database',
+        page: PageContent,
+        path: '/databases/:child',
+        inNavigation: true,
+        children: [
+            { id: 'MongoDB', path: '/databases/mongodb' },
+            { id: 'MySql', path: '/databases/mysql' },
         ],
     },
     {
@@ -40,60 +79,69 @@ export const AppProtectedRoutes = [
         children: [
             { id: 'CSS Frameworks', path: '/frameworks-libraries/css-frameworks' },
             { id: 'CSS Animations', path: '/frameworks-libraries/css-animations' },
-            { id: 'Javascript Animation Libraries', path: '/frameworks-libraries/javascript-animation-libraries' },
+            { id: 'Javascript Animation', path: '/frameworks-libraries/javascript-animation-libraries' },
             { id: 'Angular UI', path: '/frameworks-libraries/angular-ui' },
-            { id: 'React UI', path: '/frameworks-libraries/react-ui' },
             { id: 'Svelte UI', path: '/frameworks-libraries/svelte-ui' },
             { id: 'Vue UI', path: '/frameworks-libraries/vue-ui' },
-
-        ],
-    },
-
-    {
-        id: 'HTML',
-        page: PageContent,
-        path: '/htmls/:child',
-        inNavigation: true,
-        children: [
-            { id: 'Semantics by Category', path: '/htmls/elements-by-category' },
-            { id: 'All Attributes', path: '/htmls/all-html-attributes' },
-            { id: 'Color Names', path: '/htmls/html-color-names' },
-            { id: 'Event Attributes', path: '/htmls/html-event-attributes' },
-            { id: 'Global Attributes', path: '/htmls/html-global-attributes' },
         ],
     },
     {
-        id: 'Javascript',
+        id: 'React',
         page: PageContent,
-        path: '/javascripts/:child',
+        path: '/reacts/:child',
         inNavigation: true,
         children: [
-            { id: 'General', path: '/javascripts/js-general' },
-            { id: 'ES6+', path: '/javascripts/js-es6-plus' },
-            { id: 'Array Properties', path: '/javascripts/js-array-properties' },
-            { id: 'Date Methods', path: '/javascripts/js-date-methods' },
-            { id: 'Math Object Methods', path: '/javascripts/js-math-object-methods' },
-            { id: 'String Methods', path: '/javascripts/js-string-methods' },
+            { id: 'React UI', path: '/frameworks-libraries/react-ui' },
+            { id: 'React Reusability', path: '/reacts/react-reusability' },
+            { id: 'React/Redux snippets', path: '/reacts/react-redux-snippets' },
         ],
     },
     {
-        id: 'PHP',
+        id: 'Website Optimization',
         page: PageContent,
-        path: '/phps/:child',
+        path: '/website-optimizations/:child',
         inNavigation: true,
         children: [
-            { id: 'Array Functions', path: '/phps/php-array-functions' },
-            { id: 'String Functions', path: '/phps/php-string-functions' },
-            { id: 'Variable Functions', path: '/phps/php-variable-functions' },
+            { id: 'SEO', path: '/website-optimizations/seo' },
+            { id: 'Image Compression', path: '/tools/image-compression' },
+
         ],
     },
+    {
+        id: 'Theory',
+        page: PageContent,
+        path: '/theories/:child',
+        inNavigation: true,
+        children: [
+            { id: 'Javascript', path: '/theories/javascript' },
 
+        ],
+    },
+    {
+        id: 'Design',
+        page: PageContent,
+        path: '/designs/:child',
+        inNavigation: true,
+        children: [
+            { id: 'Downloadable Software', path: '/designs/downloadable-design-software' },
+            { id: 'HTML & CSS Templates', path: '/designs/html-css-templates' },
+            { id: 'Inspiration', path: '/designs/design-inspiration' },
+            { id: 'Online Tools', path: '/designs/online-design-tools' },
+            { id: 'Style Guides', path: '/designs/design-systems-style-guides' },
+            { id: 'UI Components & Kits', path: '/designs/ui-components-kits' },
+            { id: 'UX/UI Online', path: '/designs/ux-ui-online-resources' },
+        ],
+    },
     {
         id: 'Other',
         page: PageContent,
         path: '/other-resources/:child',
         inNavigation: true,
         children: [
+            { id: 'Git', path: '/other-resources/git' },
+            { id: 'HTTP Codes', path: '/other-resources/http' },
+            { id: 'Linux CLI', path: '/other-resources/linux-cli' },
+            { id: 'Markdown', path: '/other-resources/markdown' },
             { id: 'Regular Expressions', path: '/other-resources/regular-expressions' },
         ],
     },
@@ -103,12 +151,20 @@ export const AppProtectedRoutes = [
         path: '/tools/:child',
         inNavigation: true,
         children: [
-            { id: 'Image Compression', path: '/tools/image-compression' },
-            { id: 'Tools', path: '/tools/other-tools' },
-
+            { id: 'Docker', path: '/tools/docker' },
+            { id: 'Online Tools', path: '/tools/other-tools' },
         ],
     },
-
+    {
+        id: 'Server',
+        page: PageContent,
+        path: '/servers/:child',
+        inNavigation: true,
+        children: [
+            { id: 'System Admin CLI', path: '/other-resources/system-admin' },
+            { id: 'Nodejs', path: '/servers/nodejs' },
+        ],
+    },
 ];
 
 
