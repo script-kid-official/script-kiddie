@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import AppStore from 'context/AppContext';
 
 ReactDOM.render(
-    <BrowserRouter basename='/script-kiddie'>
+    <BrowserRouter basename='/'>
         <AppStore>
             <App />
         </AppStore>
