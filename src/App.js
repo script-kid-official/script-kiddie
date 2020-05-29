@@ -36,10 +36,10 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider>
-        <main className={toggleDrawer && isAuthenticated ? classes.content : classes.contentShift}>
+        <div className={toggleDrawer && isAuthenticated ? classes.content : classes.contentShift}>
           <AppHeader />
           <AppRenderRoutes />
-        </main>
+        </div>
       </ThemeProvider>
     </div>
 
