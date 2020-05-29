@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from 'context/AppContext';
-import { CssBaseline, Grid, Button } from '@material-ui/core';
+import { CssBaseline, Grid, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         minHeight: '100vh',
         color: 'white',
         backgroundColor: '#000000c2',
-        fontSize: '4em'
+        fontSize: '3em'
     },
 
 }));
@@ -38,7 +38,14 @@ function Homepage() {
         <Grid container component="main" className={classes.root}>
             <CssBaseline />
             <Grid item xs={true} sm={12} md={12} className={classes.image} >
-                <div className={classes.appName}>Welcome to Script Kiddie!
+                <div className={classes.appName}>
+                    <Typography variant="h3">
+                        Welcome to Script Kiddie - Beta!
+                    </Typography>
+
+                    <Typography variant="h5" style={{ padding: '1em 0' }}>
+                        One Resource for Everything Coding!
+                    </Typography>
                     {!isAuthenticated && <Link to='/login'>
                         <Button variant="contained" color="primary" style={{ fontSize: '0.4em', padding: '.3em 1.5em' }}>LOGIN</Button>
                     </Link>
