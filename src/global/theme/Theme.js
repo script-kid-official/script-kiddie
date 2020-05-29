@@ -59,7 +59,7 @@ theme = {
         },
         MuiListItemText: {
             primary: {
-                fontWeight: theme.typography.fontWeightMedium,
+                fontWeight: theme.typography.fontWeightSmall,
             },
         },
         MuiListItemIcon: {

@@ -40,7 +40,6 @@ section.content {
     flex-flow: wrap;
 }
 
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 6px;
@@ -98,8 +97,15 @@ section.content {
     color: rgba(0, 0, 0, 0.87);
 }
 
-
 .block p {
     background-color: #fff;
     padding: 1.5em;
+    margin: 0;
+    border-top: 1px solid #2196f3;
+}
+
+/* Material UI */
+.MuiList-padding {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
 }

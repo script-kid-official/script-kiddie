@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ListItem, ListItemText, Collapse, Typography, Divider } from '@material-ui/core';
 import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
-
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 const useStyles = makeStyles(() => ({
     itemHeader: {
         color: '#fff',
@@ -13,8 +12,7 @@ const useStyles = makeStyles(() => ({
     },
     item: {
         textAlign: 'center',
-        fontSize: '10px',
-        padding: '8px 8px 0 0',
+        padding: '8px 20px 0 0',
         color: 'white'
     }
 }));
@@ -30,7 +28,7 @@ function AppDrawerItem({ parent }) {
     return (<>
         <ParentItem handleNavToggle={handleNavToggle} openMenuToggle={openMenuToggle} parent={parent} classes={classes} />
         <Collapse in={openMenuToggle} timeout="auto" unmountOnExit>
-            <Divider />
+            <Divider  style={{ margin: '1em 0' }}/>
             {
                 parent.children.map(child => {
                     return <NavLink key={child.id} to={child.path}>
@@ -55,7 +53,7 @@ const ParentItem = ({ classes, parent, handleNavToggle, openMenuToggle }) => (
         <ListItemText classes={{ primary: classes.itemHeader }} >
             {parent.id}
         </ListItemText>
-        {openMenuToggle ? <ExpandLess style={{ color: '#70c0ff' }} /> : <ExpandMore style={{ color: '#70c0ff' }} />}
+        {openMenuToggle ? <ExpandLess style={{ color: '#70c0ff' }} /> : <ArrowForwardIosIcon  style={{ color: '#70c0ff', fontSize: '12px' }} />}
     </ListItem>
 )
 
