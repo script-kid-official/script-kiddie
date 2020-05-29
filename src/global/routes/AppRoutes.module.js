@@ -139,8 +139,6 @@ export const AppProtectedRoutes = [
         inNavigation: true,
         children: [
             { id: 'Git', path: '/other-resources/git' },
-            { id: 'HTTP Codes', path: '/other-resources/http' },
-            { id: 'Linux CLI', path: '/other-resources/linux-cli' },
             { id: 'Markdown', path: '/other-resources/markdown' },
             { id: 'Regular Expressions', path: '/other-resources/regular-expressions' },
         ],
@@ -161,8 +159,10 @@ export const AppProtectedRoutes = [
         path: '/servers/:child',
         inNavigation: true,
         children: [
-            { id: 'System Admin CLI', path: '/other-resources/system-admin' },
+            { id: 'HTTP Codes', path: '/other-resources/http' },
             { id: 'Nodejs', path: '/servers/nodejs' },
+            { id: 'Linux CLI', path: '/other-resources/linux-cli' },
+            { id: 'System Admin CLI', path: '/other-resources/system-admin' },
         ],
     },
 ];
