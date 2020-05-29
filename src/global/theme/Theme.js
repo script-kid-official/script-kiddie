@@ -37,9 +37,6 @@ let theme = createMuiTheme({
 theme = {
     ...theme,
     overrides: {
-        MuiList: {
-            disablePadding: 'true'
-        },
         MuiDrawer: {
             paper: {
                 width: '250px',
