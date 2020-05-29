@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { AppContext } from 'context/AppContext';
 import AppRenderRoutes from 'global/routes/AppRenderRoutes.module';
-import ThemeProvider from 'global/Theme';
+import ThemeProvider from 'global/theme/Theme';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppNavigation, AppHeader } from 'components';
+import { AppHeader } from 'components';
 import 'global/global.css';
 import { getCookie } from "utils/common";
 
@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 0,
   },
 }))
 
@@ -35,17 +34,14 @@ function App() {
   }
 
   return (
-    <ThemeProvider>
-      <div className="App">
-        {isAuthenticated && <AppNavigation />}
-
+    <div className="App">
+      <ThemeProvider>
         <main className={toggleDrawer && isAuthenticated ? classes.content : classes.contentShift}>
           <AppHeader />
           <AppRenderRoutes />
         </main>
-
-      </div>
-    </ThemeProvider>
+      </ThemeProvider>
+    </div>
 
   );
 }

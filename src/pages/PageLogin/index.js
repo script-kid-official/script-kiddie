@@ -7,14 +7,7 @@ import { Avatar, Button, CssBaseline, TextField, Link, Paper, Box, Grid, Typogra
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { postLogin } from 'api';
 import { setCookie } from 'utils/common';
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            <Link color="inherit" href="https://github.com/steven-jackson-dev/" target="_blank">Steven Jackson</Link>
-            {' '}{new Date().getFullYear()}
-        </Typography>
-    );
-}
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -104,25 +97,25 @@ function PageLogin() {
                         {showMessage &&
                             <div style={{ fontSize: '1em', color: showMessage.status === 'failed' ? 'red' : 'green' }}>{showMessage.message}</div>
                         }
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                            onClick={handleLogin}
-                        >
-
+                        <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit} onClick={handleLogin} >
                             Sign In
-            </Button>
+                        </Button>
                     </form>
                     <Box mt={5}>
-
                         <Copyright />
                     </Box>
                 </div>
             </Grid>
         </Grid>
+    );
+}
+
+const Copyright = () => {
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            <Link color="inherit" href="https://github.com/steven-jackson-dev/" target="_blank">Steven Jackson</Link>
+            {' '}{new Date().getFullYear()}
+        </Typography>
     );
 }
 

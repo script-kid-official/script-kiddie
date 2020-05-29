@@ -44,9 +44,7 @@ function Homepage() {
                     </Link>
                     }
                 </div>
-
             </Grid>
-
         </Grid>
     );
 }

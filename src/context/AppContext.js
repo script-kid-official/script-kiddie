@@ -16,8 +16,6 @@ function reducer(state, action) {
             return { ...state, isLoading: action.payload }
         default: return state;
     }
-
-
 }
 
 const AppStore = ({ children }) => {
