@@ -77,7 +77,7 @@ function PageLogin() {
                             id="login"
                             label="Login/Usename"
                             name="login"
-                            value="test"
+                            value={inputLogin}
                             onChange={setInputLogin}
                             autoFocus
                         />
@@ -89,7 +89,7 @@ function PageLogin() {
                             name="password"
                             label="Password"
                             type="password"
-                            value="test123"
+                            value={inputPassword}
                             id="password"
                             onChange={setInputPassword}
                             autoComplete="current-password"
