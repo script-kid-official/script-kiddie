@@ -7,7 +7,7 @@ const url = 'http://134.122.97.189/';
 export const fetchContentBySlug = async (parent, child) => {
     if (!child) throw Error('Slug Must be defined')
     try {
-        const token = getCookie('SKToken');
+        const token = getCookie('SK_JWT');
         const { data } = await axios.get(url.concat(`${parent}?slug=${child}`), { headers: { "Authorization": `Bearer ${token}` } })
         return { success: true, data: data[0].children }
     } catch (error) {

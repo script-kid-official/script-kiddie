@@ -14,6 +14,8 @@ function reducer(state, action) {
             return { ...state, toggleDrawer: !state.toggleDrawer }
         case 'IS_ERROR':
             return { ...state, error: { isError: true, message: action.payload.message } }
+            case 'REMOVE_AUTHENTICATED':
+            return { ...state, isAuthenticated: false }
         case 'RESET_ERROR':
             return { ...state, error: { isError: false, message: '' } }
         case 'IS_LOADING':

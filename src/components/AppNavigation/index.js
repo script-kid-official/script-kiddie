@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Button, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -17,11 +18,17 @@ const useStyles = makeStyles((theme) => ({
 function AppNavigation() {
   const classes = useStyles();
   const [{ isAuthenticated }, dispatch] = useContext(AppContext);
+  const history = useHistory();
 
   const handleToggleDrawer = () => {
     dispatch({ type: 'TOGGLE_DRAWER' })
   };
 
+  const handleLogout = () => {
+    document.cookie = 'SK_JWT=; Max-Age=0;';
+    dispatch({ type: 'REMOVE_AUTHENTICATED' })
+    history.push('login');
+  }
   return (
     <nav>
       <>
@@ -36,8 +43,8 @@ function AppNavigation() {
             </Typography>
             {!isAuthenticated && <Link to='/login' style={{ color: 'white' }}>
               <Button color="inherit">Login</Button>
-              </Link>}
-            {isAuthenticated && <Button color="inherit">Logout</Button>}
+            </Link>}
+            {isAuthenticated && <Button color="inherit" onClick={handleLogout}>Logout</Button>}
           </Toolbar>
         </AppBar>
       </>

@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const [{ toggleDrawer, isAuthenticated, user }, dispatch] = useContext(AppContext);
   const classes = useStyles();
-  const cookie = getCookie('SKToken');
+  const cookie = getCookie('SK_JWT');
 
   if (cookie && cookie !== user.jwtToken) {
     dispatch({ type: 'SET_JWT_TOKEN', payload: cookie })
@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider>
-      <CssBaseline />
+        <CssBaseline />
         <div className={toggleDrawer && isAuthenticated ? classes.content : classes.contentShift}>
           <AppHeader />
           <AppRenderRoutes />

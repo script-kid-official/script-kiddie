@@ -49,7 +49,7 @@ function PageLogin() {
 
         if (login.status === 'failed') setShowMessage(login)
         if (login.jwt) {
-            setCookie('SKToken', login.jwt, 1)
+            setCookie('SK_JWT', login.jwt, 1)
             dispatch({ type: 'SET_JWT_TOKEN', payload: login.jwt })
             dispatch({ type: 'TOGGLE_DRAWER' })
         }
