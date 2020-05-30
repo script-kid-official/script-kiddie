@@ -39,11 +39,11 @@ function Homepage() {
             <Grid item xs={true} sm={12} md={12} className={classes.image} >
                 <div className={classes.appName}>
                     <Typography variant="h3">
-                        Welcome to Script Kiddie - Beta!
+                        Script Kiddie (Beta)
                     </Typography>
 
                     <Typography variant="h5" style={{ padding: '1em 0' }}>
-                        One Resource for Everything Coding!
+                        Finding code made simple.
                     </Typography>
                     {!isAuthenticated && <Link to='/login'>
                         <Button variant="contained" color="primary" style={{ fontSize: '0.4em', padding: '.3em 1.5em' }}>LOGIN</Button>
