@@ -5,6 +5,7 @@ import ProtectedRoutes from './ProtectedRoutes';
 import PageLogin from 'pages/PageLogin';
 import Homepage from 'pages/Homepage';
 import AuthGuard from './AuthGuard';
+import ErrorPage from 'pages/ErrorPage';
 
 const AppRenderRoutes = () => {
     let location = useLocation();
@@ -18,6 +19,7 @@ const AppRenderRoutes = () => {
                 <Switch location={location}>
                     <Route exact path='/' component={Homepage} />
                     <Route exact path='/login' component={PageLogin} />
+                    <Route exact path='/error' component={ErrorPage} />
                     <AuthGuard>
                         <ProtectedRoutes />
                     </AuthGuard>

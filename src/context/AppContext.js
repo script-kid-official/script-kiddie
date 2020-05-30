@@ -12,6 +12,10 @@ function reducer(state, action) {
             }
         case 'TOGGLE_DRAWER':
             return { ...state, toggleDrawer: !state.toggleDrawer }
+        case 'IS_ERROR':
+            return { ...state, error: { isError: true, message: action.payload.message } }
+        case 'RESET_ERROR':
+            return { ...state, error: { isError: false, message: '' } }
         case 'IS_LOADING':
             return { ...state, isLoading: action.payload }
         default: return state;
@@ -29,6 +33,10 @@ const initialState = {
     isAuthenticated: false,
     isLoading: false,
     toggleDrawer: false,
+    error: {
+        isError: false,
+        message: ''
+    },
     user: {
         jwtToken: null
     },

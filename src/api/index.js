@@ -9,9 +9,9 @@ export const fetchContentBySlug = async (parent, child) => {
     try {
         const token = getCookie('SKToken');
         const { data } = await axios.get(url.concat(`${parent}?slug=${child}`), { headers: { "Authorization": `Bearer ${token}` } })
-        return data[0].children
+        return { success: true, data: data[0].children }
     } catch (error) {
-        console.log(error)
+        return { ...error.response.data };
     }
 }
 

@@ -40,8 +40,8 @@ function PageLogin() {
     const [state, dispatch] = useContext(AppContext);
     const classes = useStyles();
     const [showMessage, setShowMessage] = useState(false);
-    const [inputLogin, setInputLogin] = useInputState(false);
-    const [inputPassword, setInputPassword] = useInputState(false);
+    const [inputLogin, setInputLogin] = useInputState('test');
+    const [inputPassword, setInputPassword] = useInputState('test123');
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -52,10 +52,8 @@ function PageLogin() {
             setCookie('SKToken', login.jwt, 1)
             dispatch({ type: 'SET_JWT_TOKEN', payload: login.jwt })
             dispatch({ type: 'TOGGLE_DRAWER' })
-
         }
     }
-
 
 
     if (state.isAuthenticated) return <Redirect to="/" />;
@@ -79,6 +77,7 @@ function PageLogin() {
                             id="login"
                             label="Login/Usename"
                             name="login"
+                            value="test"
                             onChange={setInputLogin}
                             autoFocus
                         />
@@ -90,6 +89,7 @@ function PageLogin() {
                             name="password"
                             label="Password"
                             type="password"
+                            value="test123"
                             id="password"
                             onChange={setInputPassword}
                             autoComplete="current-password"

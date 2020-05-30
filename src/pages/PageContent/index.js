@@ -4,9 +4,10 @@ import { withRouter } from 'react-router-dom';
 import { AppContext } from 'context/AppContext';
 import { fetchContentBySlug } from 'api'
 import { AppLoader } from 'components';
+import { Redirect } from 'react-router-dom';
 
 function PageContent(props) {
-    const [{ isLoading, response }, dispatch] = useContext(AppContext);
+    const [{ isLoading, error, response }, dispatch] = useContext(AppContext);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -20,12 +21,16 @@ function PageContent(props) {
     const fetchContent = async (parent, child) => {
         try {
             const response = await fetchContentBySlug(parent, child)
-            if (response) {
-                dispatch({ type: 'SET_CONTENT', payload: response })
-            }
-        } catch (error) {
-            throw new Error('API Error: ', error)
 
+            if (response.error) dispatch({ type: 'IS_ERROR', payload: { error: true, message: response.message } })
+            if (response.success) {
+                console.log("fetchContent -> response2", response.data)
+                dispatch({ type: 'SET_CONTENT', payload: response.data })
+                dispatch({ type: 'RESET_ERROR' })
+            }
+
+        } catch (error) {
+            throw new Error('Api Error')
         }
         dispatch({ type: 'IS_LOADING', payload: false })
 
@@ -34,6 +39,7 @@ function PageContent(props) {
     return (
         <div style={{ height: '100vh', backgroundColor: 'rgb(58, 58, 58)' }}>
             {isLoading && <AppLoader open={isLoading} />}
+            {error.isError && <Redirect to='/error' />}
             {(!isLoading) &&
                 (response) &&
                 response.map((e, key) => {
@@ -41,7 +47,6 @@ function PageContent(props) {
                         <AppContent key={e.id} {...e} />
                     </div>
                 })
-
             }
         </div>
     );

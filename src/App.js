@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { AppHeader } from 'components';
 import 'global/global.css';
 import { getCookie } from "utils/common";
+import { CssBaseline } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -36,6 +37,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider>
+      <CssBaseline />
         <div className={toggleDrawer && isAuthenticated ? classes.content : classes.contentShift}>
           <AppHeader />
           <AppRenderRoutes />
