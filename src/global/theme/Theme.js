@@ -39,51 +39,14 @@ theme = {
     overrides: {
         MuiDrawer: {
             paper: {
-                backgroundColor: '#191919',
+                width: '250px',
+                backgroundColor: '#292929',
             },
         },
-        MuiButton: {
-            label: {
-                textTransform: 'none',
-            },
-            contained: {
-                boxShadow: 'none',
-                '&:active': {
-                    boxShadow: 'none',
-                },
-            },
-        },
-        MuiTabs: {
-            root: {
-                marginLeft: theme.spacing(1),
-            },
-            indicator: {
-                height: 3,
-                borderTopLeftRadius: 3,
-                borderTopRightRadius: 3,
-                backgroundColor: theme.palette.common.white,
-            },
-        },
-        MuiTab: {
-            root: {
-                textTransform: 'none',
-                margin: '0 16px',
-                minWidth: 0,
-                padding: 0,
-                [theme.breakpoints.up('md')]: {
-                    padding: 0,
-                    minWidth: 0,
-                },
-            },
-        },
+
         MuiIconButton: {
             root: {
                 padding: theme.spacing(1),
-            },
-        },
-        MuiTooltip: {
-            tooltip: {
-                borderRadius: 4,
             },
         },
         MuiDivider: {
@@ -93,7 +56,7 @@ theme = {
         },
         MuiListItemText: {
             primary: {
-                fontWeight: theme.typography.fontWeightMedium,
+                fontWeight: theme.typography.fontWeightSmall,
             },
         },
         MuiListItemIcon: {

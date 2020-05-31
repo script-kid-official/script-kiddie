@@ -23,35 +23,49 @@ a {
 
 pre {
     margin: 0;
-    padding: 4em;
+    padding: 1em 0;
 }
 
-a:visited {
-    color: #e91e1e;
-}
+/* Nav Styling */
 
-nav a {
-    text-decoration: none;
-    color: white !important;
-}
-
-nav a.active {
+a.active p {
     text-decoration: none;
     color: #70c0ff !important;
 }
+
+/* Content Styling */
 
 section.content {
     display: flex;
     flex-flow: wrap;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: rgb(58, 58, 58);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #2196f3;
+    border-left: 1px solid rgb(58, 58, 58);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    border-radius: 5px;
+    background: #2196f3;
+    border-left: 1px solid rgb(58, 58, 58);
+}
+
+/* Block Content Styling */
 .block {
     margin: 2em;
     flex: auto;
     max-width: 45%;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1120px) {
     .block {
         margin: 2em;
         flex: auto;
@@ -86,33 +100,96 @@ section.content {
 .block p {
     background-color: #fff;
     padding: 1.5em;
-
+    margin: 0;
+    border-top: 1px solid #2196f3;
 }
 
-.half-width {
-    width: 50%;
-    margin: 2em;
+
+/* Masonry Block Content Styling */
+
+section.masonry-grid {
+    column-count: 4;
+    column-gap: 1em;
+    display: inherit;
+    width: 100%;
 }
 
-/* Let's get this party started */
-::-webkit-scrollbar {
-    width: 6px;
-    background-color: rgb(58, 58, 58);
+section.masonry-grid-2col {
+    column-count: 2;
+    column-gap: 1em;
+    display: inherit;
+    width: 100%;
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background: #2196f3;
-    border-left: 1px solid rgb(58, 58, 58);
+@media screen and (max-width: 1800px) {
+
+    section.masonry-grid {
+        column-count: 3;
+        column-gap: 1em;
+        display: inherit;
+        width: 100%;
+    }
+
+    section.masonry-grid-2col {
+        column-count: 2;
+        column-gap: 1em;
+        display: inherit;
+        width: 100%;
+    }
 }
 
-::-webkit-scrollbar-thumb:window-inactive {
-    border-radius: 5px;
-    background: #2196f3;
-    border-left: 1px solid rgb(58, 58, 58);
+@media screen and (max-width: 1120px) {
+    section.masonry-grid {
+        column-count: 2;
+        column-gap: 1em;
+        display: inherit;
+        width: 100%;
+    }
+
+    section.masonry-grid-2col {
+        column-count: 2;
+        column-gap: 1em;
+        display: inherit;
+        width: 100%;
+    }
 }
 
+@media screen and (max-width: 700px) {
+    section.masonry-grid {
+        column-count: 1;
+        column-gap: 1em;
+        display: inherit;
+        width: 100%;
+    }
+
+    section.masonry-grid-2col {
+        column-count: 1;
+        column-gap: 1em;
+        display: inherit;
+        width: 100%;
+    }
+}
+
+
+section.masonry-grid>.block {
+    background-color: #eee;
+    display: inline-block;
+    margin: 0 0 1em;
+    max-width: 100%;
+    width: 100%;
+}
+
+section.masonry-grid-2col>.block {
+    background-color: #eee;
+    display: inline-block;
+    margin: 0 0 1em;
+    max-width: 100%;
+    width: 100%;
+}
+
+
+
+/* Material UI */
 .MuiList-padding {
     padding-top: 0px !important;
     padding-bottom: 0px !important;

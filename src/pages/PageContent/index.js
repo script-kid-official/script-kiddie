@@ -3,19 +3,11 @@ import { AppContent } from 'components';
 import { withRouter } from 'react-router-dom';
 import { AppContext } from 'context/AppContext';
 import { fetchContentBySlug } from 'api'
-import { makeStyles } from '@material-ui/core/styles';
-import { Backdrop, CircularProgress, Typography } from '@material-ui/core';
-
-const useStyles = makeStyles((theme) => ({
-    backdrop: {
-        zIndex: theme.zIndex.drawer + 1,
-        color: '#fff',
-    },
-}));
+import { AppLoader } from 'components';
+import { Redirect } from 'react-router-dom';
 
 function PageContent(props) {
-    const [{ isLoading, response }, dispatch] = useContext(AppContext);
-    const classes = useStyles();
+    const [{ isLoading, error, response }, dispatch] = useContext(AppContext);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -29,35 +21,42 @@ function PageContent(props) {
     const fetchContent = async (parent, child) => {
         try {
             const response = await fetchContentBySlug(parent, child)
-            if (response) {
-                dispatch({ type: 'SET_CONTENT', payload: response })
-                dispatch({ type: 'IS_LOADING', payload: false })
+
+            if (response.error) dispatch({ type: 'IS_ERROR', payload: { error: true, message: response.message } })
+            if (response.success) {
+                console.log("fetchContent -> response2", response.data)
+                dispatch({ type: 'SET_CONTENT', payload: response.data })
+                dispatch({ type: 'RESET_ERROR' })
             }
+
         } catch (error) {
-            throw new Error('API Error: ', error)
+            throw new Error('Api Error')
         }
+        dispatch({ type: 'IS_LOADING', payload: false })
+
     }
 
     return (
-        <div style={{ height: '100vh', backgroundColor: 'rgb(58, 58, 58)' }}>
-            {isLoading && <Backdrop className={classes.backdrop} open={isLoading}>
-                <CircularProgress color="inherit" />
-                <Typography variant='h5' style={{ paddingLeft: '1em' }}>LOADING</Typography>
-            </Backdrop>
-            }
-
+        <div style={{ minHeight: '100vh', backgroundColor: 'rgb(58, 58, 58)' }}>
+            {isLoading && <AppLoader open={isLoading} />}
+            {error.isError && <Redirect to='/error' />}
             {(!isLoading) &&
                 (response) &&
                 response.map((e, key) => {
-                    return <div key={key} style={{ paddingTop: '1em', backgroundColor: '#3a3a3a' }}>
+                    return <div key={key} style={{ margin: '0em 3em', backgroundColor: '#3a3a3a' }}>
                         <AppContent key={e.id} {...e} />
                     </div>
                 })
-
             }
         </div>
     );
 }
 
+// Set default props
+AppContent.defaultProps = {
+    name: "Content Name",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    description: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+};
 
 export default withRouter(PageContent);

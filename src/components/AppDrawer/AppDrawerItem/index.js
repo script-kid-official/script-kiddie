@@ -1,29 +1,38 @@
 import React, { useState } from 'react';
-import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 import { ListItem, ListItemText, Collapse, Typography, Divider } from '@material-ui/core';
 import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import { makeStyles } from '@material-ui/core/styles';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+const useStyles = makeStyles(() => ({
+    itemHeader: {
+        color: '#fff',
+        fontSize: '15px',
+        textAlign: 'center'
+    },
+    item: {
+        textAlign: 'center',
+        padding: '8px 20px 0 0',
+        color: 'white'
+    }
+}));
 
-
-function AppDrawerItem({ parent, classes }) {
+function AppDrawerItem({ parent }) {
     const [openMenuToggle, setOpenMenuToggle] = useState(false);
+    const classes = useStyles();
+
     const handleNavToggle = (e) => {
         setOpenMenuToggle(!openMenuToggle);
     };
+
     return (<>
-        <ListItem button className={classes.categoryHeader} onClick={handleNavToggle}>
-            <ListItemText classes={{ primary: classes.categoryHeaderPrimary }} >
-                {parent.id}
-            </ListItemText>
-            {openMenuToggle ? <ExpandLess style={{ color: '#70c0ff' }} /> : <ExpandMore style={{ color: '#70c0ff' }} />}
-        </ListItem>
+        <ParentItem handleNavToggle={handleNavToggle} openMenuToggle={openMenuToggle} parent={parent} classes={classes} />
         <Collapse in={openMenuToggle} timeout="auto" unmountOnExit>
-            <Divider />
+            <Divider  style={{ margin: '1em 0' }}/>
             {
                 parent.children.map(child => {
-                    return <NavLink key={child.id} className={classes.navLink} to={child.path}>
-                        <ListItem button className={clsx(classes.item)} >
+                    return <NavLink key={child.id} to={child.path}>
+                        <ListItem button className={classes.item} >
                             <ListItemText >
                                 <Typography variant="body2">
                                     {child.id}
@@ -31,7 +40,6 @@ function AppDrawerItem({ parent, classes }) {
                             </ListItemText>
                         </ListItem>
                     </NavLink>
-
                 })
             }
             <Divider style={{ margin: '1em 0' }} />
@@ -39,5 +47,16 @@ function AppDrawerItem({ parent, classes }) {
     </>
     )
 }
+
+const ParentItem = ({ classes, parent, handleNavToggle, openMenuToggle }) => (
+    <ListItem button onClick={handleNavToggle}>
+        <ListItemText classes={{ primary: classes.itemHeader }} >
+            {parent.id}
+        </ListItemText>
+        {openMenuToggle ? <ExpandLess style={{ color: '#70c0ff' }} /> : <ArrowForwardIosIcon  style={{ color: '#70c0ff', fontSize: '12px' }} />}
+    </ListItem>
+)
+
+
 
 export default AppDrawerItem

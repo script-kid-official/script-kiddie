@@ -7,14 +7,7 @@ import { Avatar, Button, CssBaseline, TextField, Link, Paper, Box, Grid, Typogra
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { postLogin } from 'api';
 import { setCookie } from 'utils/common';
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            <Link color="inherit" href="https://github.com/steven-jackson-dev/" target="_blank">Steven Jackson</Link>
-            {' '}{new Date().getFullYear()}
-        </Typography>
-    );
-}
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,8 +40,8 @@ function PageLogin() {
     const [state, dispatch] = useContext(AppContext);
     const classes = useStyles();
     const [showMessage, setShowMessage] = useState(false);
-    const [inputLogin, setInputLogin] = useInputState(false);
-    const [inputPassword, setInputPassword] = useInputState(false);
+    const [inputLogin, setInputLogin] = useInputState('test');
+    const [inputPassword, setInputPassword] = useInputState('test123');
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -56,13 +49,11 @@ function PageLogin() {
 
         if (login.status === 'failed') setShowMessage(login)
         if (login.jwt) {
-            setCookie('SKToken', login.jwt, 1)
+            setCookie('SK_JWT', login.jwt, 1)
             dispatch({ type: 'SET_JWT_TOKEN', payload: login.jwt })
             dispatch({ type: 'TOGGLE_DRAWER' })
-
         }
     }
-
 
 
     if (state.isAuthenticated) return <Redirect to="/" />;
@@ -86,6 +77,7 @@ function PageLogin() {
                             id="login"
                             label="Login/Usename"
                             name="login"
+                            value={inputLogin}
                             onChange={setInputLogin}
                             autoFocus
                         />
@@ -97,6 +89,7 @@ function PageLogin() {
                             name="password"
                             label="Password"
                             type="password"
+                            value={inputPassword}
                             id="password"
                             onChange={setInputPassword}
                             autoComplete="current-password"
@@ -104,25 +97,25 @@ function PageLogin() {
                         {showMessage &&
                             <div style={{ fontSize: '1em', color: showMessage.status === 'failed' ? 'red' : 'green' }}>{showMessage.message}</div>
                         }
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                            onClick={handleLogin}
-                        >
-
+                        <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit} onClick={handleLogin} >
                             Sign In
-            </Button>
+                        </Button>
                     </form>
                     <Box mt={5}>
-
                         <Copyright />
                     </Box>
                 </div>
             </Grid>
         </Grid>
+    );
+}
+
+const Copyright = () => {
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            <Link color="inherit" href="https://github.com/steven-jackson-dev/" target="_blank">Steven Jackson</Link>
+            {' '}{new Date().getFullYear()}
+        </Typography>
     );
 }
 

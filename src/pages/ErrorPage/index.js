@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
-import { AppContext } from 'context/AppContext';
-import { Grid, Button, Typography } from '@material-ui/core';
+import React from 'react';
+import { Grid, Typography, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,32 +26,39 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#000000c2',
         fontSize: '3em'
     },
-
+    avatar: {
+        margin: theme.spacing(1),
+        padding: theme.spacing(4),
+        backgroundColor: theme.palette.secondary.main,
+    },
 }));
 
-function Homepage() {
+function ErrorPage() {
     const classes = useStyles();
-    const [{ isAuthenticated }] = useContext(AppContext);
 
     return (
         <Grid container component="main" className={classes.root}>
             <Grid item xs={true} sm={12} md={12} className={classes.image} >
                 <div className={classes.appName}>
-                    <Typography variant="h3">
-                        Script Kiddie (Beta)
+                    <Avatar className={classes.avatar}>
+                        <LockOutlinedIcon style={{ fontSize: 40 }} />
+                    </Avatar>
+                    <Typography variant="h4">
+                        Restricted
                     </Typography>
 
                     <Typography variant="h5" style={{ padding: '1em 0' }}>
-                        Finding code made simple.
+                        You do not have access to this content. 
                     </Typography>
-                    {!isAuthenticated && <Link to='/login'>
-                        <Button variant="contained" color="primary" style={{ fontSize: '0.4em', padding: '.3em 1.5em' }}>LOGIN</Button>
-                    </Link>
-                    }
+                    <Typography variant="h6" style={{ padding: '0' }}>
+                    Contact <a style={{color: '#009be5'}} href='mailto:script-kid@script-kiddie.co.za'>script-kid@script-kiddie.co.za</a> to request access.
+                    </Typography>
+
+
                 </div>
             </Grid>
-        </Grid>
+            </Grid>
     );
 }
 
-export default Homepage;
+export default ErrorPage;

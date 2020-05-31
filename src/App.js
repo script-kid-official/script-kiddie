@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import { AppContext } from 'context/AppContext';
-import AppRenderRoutes from 'global/routes/AppRenderRoutes.module';
-import ThemeProvider from 'global/Theme';
-import { makeStyles } from '@material-ui/core/styles';
-import { AppNavigation, AppHeader } from 'components';
-import 'global/global.css';
+import RenderRoutes from 'global/routes/RenderRoutes';
 import { getCookie } from "utils/common";
+import { AppContext } from 'context/AppContext';
+import ThemeProvider from 'global/theme/Theme';
+import { CssBaseline } from '@material-ui/core';
+import { AppHeader } from 'components';
+import { makeStyles } from '@material-ui/core/styles';
+import 'global/global.css';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -14,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    backgroundColor: 'rgb(58, 58, 58);',
     marginLeft: '250px',
   },
   contentShift: {
@@ -21,31 +23,28 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 0,
   },
 }))
 
 function App() {
   const [{ toggleDrawer, isAuthenticated, user }, dispatch] = useContext(AppContext);
   const classes = useStyles();
-  const cookie = getCookie('SKToken');
+  const cookie = getCookie('SK_JWT');
 
   if (cookie && cookie !== user.jwtToken) {
     dispatch({ type: 'SET_JWT_TOKEN', payload: cookie })
   }
 
   return (
-    <ThemeProvider>
-      <div className="App">
-        {isAuthenticated && <AppNavigation />}
-
-        <main className={toggleDrawer && isAuthenticated ? classes.content : classes.contentShift}>
+    <div className="App">
+      <ThemeProvider>
+        <CssBaseline />
+        <div className={toggleDrawer && isAuthenticated ? classes.content : classes.contentShift}>
           <AppHeader />
-          <AppRenderRoutes />
-        </main>
-
-      </div>
-    </ThemeProvider>
+          <RenderRoutes />
+        </div>
+      </ThemeProvider>
+    </div>
 
   );
 }

@@ -1,46 +1,13 @@
 import React, { useContext } from 'react';
 import { AppContext } from 'context/AppContext';
-import { AppProtectedRoutes } from 'global/routes/AppRoutes.module';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { AppProtectedRoutes } from 'global/routes/Routes';
+import { useTheme } from '@material-ui/core/styles';
 import { Drawer, List, Divider, IconButton } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import AppDrawerItem from './AppDrawerItem';
 
-
-const drawerWidth = 250;
-
-const useStyles = makeStyles((theme) => ({
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-    backgroundColor: '#292929',
-  },
-  categoryHeaderPrimary: {
-    color: '#fff',
-    fontSize: '15px',
-    textAlign: 'center'
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-wend',
-  },
-  item: {
-    textAlign: 'center',
-    fontSize: '10px',
-    padding: '8px 8px 0 0',
-  }
-}));
-
-function AppNavigation(props) {
-  const classes = useStyles();
+function AppNavigation() {
   const theme = useTheme();
   const [{ toggleDrawer }, dispatch] = useContext(AppContext);
 
@@ -49,33 +16,23 @@ function AppNavigation(props) {
   };
 
   return (
-    <Drawer
-      className={classes.drawer}
-      variant="persistent"
-      anchor="left"
-      open={toggleDrawer}
-      classes={{
-        paper: classes.drawerPaper,
-      }}
-    >
-      <div className={classes.drawerHeader}>
-        <IconButton onClick={handleToggleDrawer}>
-          {theme.direction === 'ltr' ? <ChevronLeftIcon style={{ color: 'white' }} /> : <ChevronRightIcon />}
-        </IconButton>
-      </div>
+    <Drawer variant="persistent" anchor="left" open={toggleDrawer} >
+      
+      <IconButton onClick={handleToggleDrawer}>
+        {theme.direction === 'ltr' ? <ChevronLeftIcon style={{ color: 'white' }} /> : <ChevronRightIcon />}
+      </IconButton>
       <Divider />
-      <List>
 
-        {AppProtectedRoutes.map((parent) => (<List key={parent.id}>
-          {parent.inNavigation && <AppDrawerItem parent={parent} classes={classes} />}
-        </List>
+      <List>
+        {AppProtectedRoutes.map((parent) => (
+          <List key={parent.id}>
+            {parent.inNavigation && <AppDrawerItem parent={parent} />}
+          </List>
         ))}
       </List>
 
     </Drawer >
   );
 }
-
-
 
 export default AppNavigation;
