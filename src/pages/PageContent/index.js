@@ -37,7 +37,7 @@ function PageContent(props) {
     }
 
     return (
-        <div style={{ minHeight: '100vh'; backgroundColor: 'rgb(58, 58, 58)' }}>
+        <div style={{ minHeight: '100vh', backgroundColor: 'rgb(58, 58, 58)' }}>
             {isLoading && <AppLoader open={isLoading} />}
             {error.isError && <Redirect to='/error' />}
             {(!isLoading) &&
