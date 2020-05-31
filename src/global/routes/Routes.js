@@ -25,9 +25,7 @@ export const AppProtectedRoutes = [
             { id: 'Animatable Properties', path: '/csses/animatable-properties' },
             { id: 'Functions', path: '/csses/css-functions' },
             { id: 'Pseudo Elements', path: '/csses/css-pseudo-elements' },
-            { id: 'Pixel to Em Converter', path: '/csses/px-to-em-converter' },
             { id: 'Selectors', path: '/csses/css-selectors' },
-
         ],
     },
     {
