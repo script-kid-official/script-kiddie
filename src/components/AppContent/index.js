@@ -19,7 +19,7 @@ function AppContent(props) {
 
   return (
     <Paper className={classes.paper}>
-      <div>
+      <div style={{margin: '2em 0'}}>
         <Typography variant="h5" align="center">{name}</Typography>
         <Typography variant="body1" align="center">{description}</Typography>
       </div>

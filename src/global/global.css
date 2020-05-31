@@ -23,7 +23,7 @@ a {
 
 pre {
     margin: 0;
-    padding: 4em;
+    padding: 1em 0;
 }
 
 /* Nav Styling */
@@ -103,6 +103,91 @@ section.content {
     margin: 0;
     border-top: 1px solid #2196f3;
 }
+
+
+/* Masonry Block Content Styling */
+
+section.masonry-grid {
+    column-count: 4;
+    column-gap: 1em;
+    display: inherit;
+    width: 100%;
+}
+
+section.masonry-grid-2col {
+    column-count: 2;
+    column-gap: 1em;
+    display: inherit;
+    width: 100%;
+}
+
+@media screen and (max-width: 1800px) {
+
+    section.masonry-grid {
+        column-count: 3;
+        column-gap: 1em;
+        display: inherit;
+        width: 100%;
+    }
+
+    section.masonry-grid-2col {
+        column-count: 2;
+        column-gap: 1em;
+        display: inherit;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+    section.masonry-grid {
+        column-count: 2;
+        column-gap: 1em;
+        display: inherit;
+        width: 100%;
+    }
+
+    section.masonry-grid-2col {
+        column-count: 2;
+        column-gap: 1em;
+        display: inherit;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    section.masonry-grid {
+        column-count: 1;
+        column-gap: 1em;
+        display: inherit;
+        width: 100%;
+    }
+
+    section.masonry-grid-2col {
+        column-count: 1;
+        column-gap: 1em;
+        display: inherit;
+        width: 100%;
+    }
+}
+
+
+section.masonry-grid>.block {
+    background-color: #eee;
+    display: inline-block;
+    margin: 0 0 1em;
+    max-width: 100%;
+    width: 100%;
+}
+
+section.masonry-grid-2col>.block {
+    background-color: #eee;
+    display: inline-block;
+    margin: 0 0 1em;
+    max-width: 100%;
+    width: 100%;
+}
+
+
 
 /* Material UI */
 .MuiList-padding {

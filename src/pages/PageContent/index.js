@@ -37,13 +37,13 @@ function PageContent(props) {
     }
 
     return (
-        <div style={{ height: '100vh', backgroundColor: 'rgb(58, 58, 58)' }}>
+        <div style={{ minHeight: '100vh'; backgroundColor: 'rgb(58, 58, 58)' }}>
             {isLoading && <AppLoader open={isLoading} />}
             {error.isError && <Redirect to='/error' />}
             {(!isLoading) &&
                 (response) &&
                 response.map((e, key) => {
-                    return <div key={key} style={{ paddingTop: '1em', backgroundColor: '#3a3a3a' }}>
+                    return <div key={key} style={{ margin: '0em 3em', backgroundColor: '#3a3a3a' }}>
                         <AppContent key={e.id} {...e} />
                     </div>
                 })
