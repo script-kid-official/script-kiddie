@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { AppContext } from 'context/AppContext';
-import AppRenderRoutes from 'global/routes/AppRenderRoutes.module';
-import ThemeProvider from 'global/theme/Theme';
-import { makeStyles } from '@material-ui/core/styles';
-import { AppHeader } from 'components';
-import 'global/global.css';
+import RenderRoutes from 'global/routes/RenderRoutes';
 import { getCookie } from "utils/common";
+import { AppContext } from 'context/AppContext';
+import ThemeProvider from 'global/theme/Theme';
 import { CssBaseline } from '@material-ui/core';
+import { AppHeader } from 'components';
+import { makeStyles } from '@material-ui/core/styles';
+import 'global/global.css';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -40,7 +40,7 @@ function App() {
         <CssBaseline />
         <div className={toggleDrawer && isAuthenticated ? classes.content : classes.contentShift}>
           <AppHeader />
-          <AppRenderRoutes />
+          <RenderRoutes />
         </div>
       </ThemeProvider>
     </div>

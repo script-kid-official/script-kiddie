@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from 'context/AppContext';
-import { AppProtectedRoutes } from 'global/routes/AppRoutes.module';
+import { AppProtectedRoutes } from 'global/routes/Routes';
 import { useTheme } from '@material-ui/core/styles';
 import { Drawer, List, Divider, IconButton } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
