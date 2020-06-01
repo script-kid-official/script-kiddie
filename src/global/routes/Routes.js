@@ -11,7 +11,6 @@ export const AppProtectedRoutes = [
             { id: 'All Attributes', path: '/htmls/all-html-attributes' },
             { id: 'Color Names', path: '/htmls/html-color-names' },
             { id: 'Event Attributes', path: '/htmls/html-event-attributes' },
-            { id: 'Global Attributes', path: '/htmls/html-global-attributes' },
             { id: 'Semantics by Category', path: '/htmls/elements-by-category' },
         ],
     },
