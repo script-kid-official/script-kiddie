@@ -163,6 +163,17 @@ export const AppProtectedRoutes = [
             { id: 'System Admin CLI', path: '/other-resources/system-admin' },
         ],
     },
+    {
+        id: 'Project Status',
+        page: PageContent,
+        path: '/project-statuses/:child',
+        icon: 'star',
+        inNavigation: true,
+        children: [
+            { id: 'Upcoming', path: '/project-statuses/upcoming' },
+            { id: 'Support Project', path: '/project-statuses/support' },
+        ],
+    },
 ];
 
 

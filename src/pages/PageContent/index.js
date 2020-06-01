@@ -24,7 +24,6 @@ function PageContent(props) {
 
             if (response.error) dispatch({ type: 'IS_ERROR', payload: { error: true, message: response.message } })
             if (response.success) {
-                console.log("fetchContent -> response2", response.data)
                 dispatch({ type: 'SET_CONTENT', payload: response.data })
                 dispatch({ type: 'RESET_ERROR' })
             }
