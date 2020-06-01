@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getCookie } from 'utils/common';
 
-const url = 'http://134.122.97.189/';
+const url = 'https://api.script-kiddie.co.za/';
 
 
 export const fetchContentBySlug = async (parent, child) => {
