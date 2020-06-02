@@ -11,7 +11,7 @@ export const AppProtectedRoutes = [
             { id: 'All Attributes', path: '/htmls/all-html-attributes' },
             { id: 'Color Names', path: '/htmls/html-color-names' },
             { id: 'Event Attributes', path: '/htmls/html-event-attributes' },
-            { id: 'Semantics by Category', path: '/htmls/elements-by-category' },
+            { id: 'Tags by Category', path: '/htmls/tags-by-category' },
         ],
     },
     {
@@ -163,13 +163,14 @@ export const AppProtectedRoutes = [
         ],
     },
     {
-        id: 'Project Status',
+        id: 'Project Info',
         page: PageContent,
         path: '/project-statuses/:child',
         icon: 'star',
         inNavigation: true,
         children: [
             { id: 'Upcoming', path: '/project-statuses/upcoming' },
+            { id: 'Contributers', path: '/project-statuses/contributers' },
             { id: 'Support Project', path: '/project-statuses/support' },
         ],
     },
