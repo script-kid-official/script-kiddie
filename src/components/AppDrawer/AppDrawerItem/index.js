@@ -4,6 +4,8 @@ import { ListItem, ListItemText, Collapse, Typography, Divider } from '@material
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import Icon from '@material-ui/core/Icon';
+
 const useStyles = makeStyles(() => ({
     itemHeader: {
         color: '#fff',
@@ -28,7 +30,7 @@ function AppDrawerItem({ parent }) {
     return (<>
         <ParentItem handleNavToggle={handleNavToggle} openMenuToggle={openMenuToggle} parent={parent} classes={classes} />
         <Collapse in={openMenuToggle} timeout="auto" unmountOnExit>
-            <Divider  style={{ margin: '1em 0' }}/>
+            <Divider style={{ margin: '1em 0' }} />
             {
                 parent.children.map(child => {
                     return <NavLink key={child.id} to={child.path}>
@@ -49,14 +51,12 @@ function AppDrawerItem({ parent }) {
 }
 
 const ParentItem = ({ classes, parent, handleNavToggle, openMenuToggle }) => (
-    <ListItem button onClick={handleNavToggle}>
+    <ListItem ListItem button onClick={handleNavToggle} >
         <ListItemText classes={{ primary: classes.itemHeader }} >
-            {parent.id}
+            {parent.icon ? <Icon style={{ color: '#ffeb3b', margin: '0 5px -5px 0', fontSize: 22 }}>{parent.icon}</Icon> : ''}{parent.id}
         </ListItemText>
-        {openMenuToggle ? <ExpandLess style={{ color: '#70c0ff' }} /> : <ArrowForwardIosIcon  style={{ color: '#70c0ff', fontSize: '12px' }} />}
-    </ListItem>
+        {openMenuToggle ? <ExpandLess style={{ color: '#70c0ff' }} /> : <ArrowForwardIosIcon style={{ color: '#70c0ff', fontSize: '12px' }} />}
+    </ListItem >
 )
-
-
 
 export default AppDrawerItem
