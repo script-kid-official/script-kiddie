@@ -9,12 +9,14 @@ const ProtectedRoutes = () => {
     // const [state] = useContext(AppContext);
 
     return (
-        <AuthRedirect>
+        <>
+            {/* <AuthRedirect> */}
             {/* {(state.isAuthenticated) && */}
             {AppProtectedRoutes.map(parent => (
                 <Route key={parent.id} exact path={parent.path} component={parent.page} />)
             )}
-        </AuthRedirect>
+            {/* </AuthRedirect> */}
+        </>
     )
 }
 

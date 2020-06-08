@@ -44,7 +44,8 @@ function AppNavigation() {
             {!isAuthenticated && <Link to='/login' style={{ color: 'white' }}>
               <Button color="inherit">Login</Button>
             </Link>}
-            {isAuthenticated && <Button color="inherit" onClick={handleLogout}>Logout</Button>}
+            {isAuthenticated && <Button color="inherit">Logout</Button>}
+            {/* {isAuthenticated && <Button color="inherit" onClick={handleLogout}>Logout</Button>} */}
           </Toolbar>
         </AppBar>
       </>
