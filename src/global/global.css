@@ -162,6 +162,10 @@ section.masonry-grid-2col {
         display: inherit;
         width: 100%;
     }
+
+    .block {
+        margin: 0em;
+    }
 }
 
 @media screen and (max-width: 700px) {
