@@ -31,9 +31,9 @@ function App() {
   const classes = useStyles();
   const cookie = getCookie('SK_JWT');
 
-  if (cookie && cookie !== user.jwtToken) {
-    dispatch({ type: 'SET_JWT_TOKEN', payload: cookie })
-  }
+  // if (cookie && cookie !== user.jwtToken) {
+  //   dispatch({ type: 'SET_JWT_TOKEN', payload: cookie })
+  // }
 
   return (
     <div className="App">

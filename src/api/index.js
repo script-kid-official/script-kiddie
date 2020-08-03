@@ -8,7 +8,8 @@ export const fetchContentBySlug = async (parent, child) => {
     if (!child) throw Error('Slug Must be defined')
     try {
         const token = getCookie('SK_JWT');
-        const { data } = await axios.get(url.concat(`${parent}?slug=${child}`), { headers: { "Authorization": `Bearer ${token}` } })
+        // const { data } = await axios.get(url.concat(`${parent}?slug=${child}`), { headers: { "Authorization": `Bearer ${token}` } })
+        const { data } = await axios.get(url.concat(`${parent}?slug=${child}`))
         return { success: true, data: data[0].children }
     } catch (error) {
         return { ...error.response.data };

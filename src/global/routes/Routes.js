@@ -25,7 +25,7 @@ export const AppProtectedRoutes = [
             { id: 'Functions', path: '/csses/css-functions' },
             { id: 'Selectors', path: '/csses/css-selectors' },
             { id: 'Frameworks', path: '/csses/css-frameworks' },
-            { id: 'Animations', path: '/csses/css-animations' },
+            { id: 'Libraries', path: '/csses/css-animations' },
         ],
     },
     {
@@ -35,7 +35,8 @@ export const AppProtectedRoutes = [
         inNavigation: true,
         children: [
             { id: 'General', path: '/javascripts/js-general' },
-            { id: 'Functions & Methods', path: '/javascripts/js-functions-methods' },
+            { id: 'Array, String & Date', path: '/javascripts/js-functions-methods' },
+            { id: 'Reusable Functions', path: '/javascripts/js-reusable-functions' },
             { id: 'ES6+', path: '/javascripts/js-es6-plus' },
             { id: 'jQuery', path: '/javascripts/jquery' },
             { id: 'JSON', path: '/javascripts/json' },
@@ -94,8 +95,8 @@ export const AppProtectedRoutes = [
         inNavigation: true,
         children: [
             { id: 'SEO Checklist', path: '/website-optimizations/seo' },
+            { id: 'Web Checklist', path: '/website-optimizations/web' },
             { id: 'Online Tools', path: '/website-optimizations/online-tools' },
-
         ],
     },
     {
@@ -104,6 +105,8 @@ export const AppProtectedRoutes = [
         path: '/theories/:child',
         inNavigation: true,
         children: [
+            { id: 'Algorithms', path: '/theories/algorithms' },
+            { id: 'Data Structures', path: '/theories/data-structures' },
             { id: 'Javascript', path: '/theories/javascript' },
 
         ],
@@ -114,10 +117,10 @@ export const AppProtectedRoutes = [
         path: '/designs/:child',
         inNavigation: true,
         children: [
-            { id: 'Software / Tools', path: '/designs/design-software-tools' },
             { id: 'Inspiration / Templates', path: '/designs/design-inspiration-templates' },
             { id: 'UI Components & Kits', path: '/designs/ui-components-kits' },
             { id: 'UX/UI Online', path: '/designs/ux-ui-online-resources' },
+            { id: 'Software / Tools', path: '/designs/design-software-tools' },
         ],
     },
     {
