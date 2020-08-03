@@ -21,7 +21,10 @@ a {
 }
 
 pre {
-    margin: 0;
+    margin: 1em 0;
+    color: #ffffff;
+    padding: 1em;
+    background: rgb(58, 58, 58);
 }
 
 /* Nav Styling */
@@ -99,7 +102,7 @@ section.content {
     background-color: #fff;
     color: rgba(0, 0, 0, 0.87);
     font-size: 1.1em;
-    padding: 1em 2em;
+    padding: 1em;
 }
 
 .block-content-description div {
