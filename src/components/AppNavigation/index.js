@@ -32,7 +32,7 @@ function AppNavigation() {
   return (
     <nav>
       <>
-        <AppBar position="static" style={{ backgroundColor: '#2196f3' }}>
+        <AppBar position="fixed" style={{ backgroundColor: '#2196f3' }}>
           <Toolbar>
             {isAuthenticated && <IconButton edge="start" className={classes.menuButton} onClick={handleToggleDrawer} color="inherit" aria-label="menu">
               <MenuIcon />
