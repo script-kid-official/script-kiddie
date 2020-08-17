@@ -32,19 +32,18 @@ function AppNavigation() {
   return (
     <nav>
       <>
-        <AppBar position="static" style={{ backgroundColor: '#2196f3' }}>
+        <AppBar position="fixed" style={{ backgroundColor: '#2196f3' }}>
           <Toolbar>
             {isAuthenticated && <IconButton edge="start" className={classes.menuButton} onClick={handleToggleDrawer} color="inherit" aria-label="menu">
               <MenuIcon />
             </IconButton>
             }
             <Typography variant="h6" className={classes.title}>
-              <Link to='/' style={{ color: 'white' }}>Script Kiddie - Beta</Link>
+              <Link to='/' style={{ color: 'white' }}>Script Kiddie</Link>
             </Typography>
             {!isAuthenticated && <Link to='/login' style={{ color: 'white' }}>
               <Button color="inherit">Login</Button>
             </Link>}
-            {isAuthenticated && <Button color="inherit">Logout</Button>}
             {/* {isAuthenticated && <Button color="inherit" onClick={handleLogout}>Logout</Button>} */}
           </Toolbar>
         </AppBar>
