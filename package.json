@@ -1,6 +1,7 @@
 {
   "name": "script-kiddie",
   "version": "2.0.0",
+  "homepage": "/app/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",

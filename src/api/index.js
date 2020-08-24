@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getCookie } from "utils/common";
 
-const url = "https://script-kiddie.co.za/api/wp-json/script-kid/v1/posts/";
+const url = "https://script-kiddie.co.za/wp-json/script-kid/v1/posts/";
 
 export const fetchContentBySlug = async () => {
   try {
